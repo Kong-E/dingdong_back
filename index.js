@@ -9,15 +9,15 @@ const cookieParser = require("cookie-parser");
 
 const port = process.env.PORT || 5001;
 
-const adminRoute = require("../admin/admin");
-const authRoute = require("../routes/auth");
-const questionRoute = require("../routes/question");
-const userRoute = require("../routes/user");
-const answerRoute = require("../routes/answer");
-const commentRoute = require("../routes/comment");
-const searchRoute = require("../routes/search");
-const mypageRoute = require("../routes/mypage");
-const setupScheduledJob = require("../utils/setupScheduledJob");
+const adminRoute = require("./admin/admin");
+const authRoute = require("./routes/auth");
+const questionRoute = require("./routes/question");
+const userRoute = require("./routes/user");
+const answerRoute = require("./routes/answer");
+const commentRoute = require("./routes/comment");
+const searchRoute = require("./routes/search");
+const mypageRoute = require("./routes/mypage");
+const setupScheduledJob = require("./utils/setupScheduledJob");
 
 dotenv.config();
 app.use(bodyParser.json());
