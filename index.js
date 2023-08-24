@@ -27,6 +27,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: "http://localhost:3000",
+    credentials: true, // Add this line
   })
 );
 app.use(express.json({ limit: "50mb" }));
