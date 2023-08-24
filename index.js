@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://dingdong-front.vercel.app/",
+    origin: "https://dingdong-front.vercel.app",
     credentials: true, // Add this line
   })
 );
