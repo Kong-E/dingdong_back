@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://dingdong-front.vercel.app/",
+    origin: "http://localhost:3000",
   })
 );
 app.use(express.json({ limit: "50mb" }));
