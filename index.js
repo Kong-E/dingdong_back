@@ -24,12 +24,6 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(passport.initialize());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"], // 허락하고자 하는 요청 주소
-    credentials: true, // Add this line
-  })
-);
 app.use(express.json({ limit: "50mb" }));
 
 mongoose
@@ -39,6 +33,17 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
+
+// Preflight 요청 처리
+app.options("*", cors());
+
+// CORS 설정 미들웨어 위치 변경
+app.use(
+  cors({
+    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"],
+    credentials: true,
+  })
+);
 
 app.use("/admin", adminRoute);
 app.use("/api/auth", authRoute);
