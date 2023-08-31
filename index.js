@@ -34,8 +34,8 @@ mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
 
-// Preflight 요청 처리
-app.options("*", cors());
+/* // Preflight 요청 처리
+app.options("*", cors()); */
 
 // CORS 설정 미들웨어 위치 변경
 app.use(
@@ -46,70 +46,14 @@ app.use(
 );
 
 // 라우트 핸들러에 CORS 허용을 설정합니다.
-app.use(
-  "/admin",
-  cors({
-    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"],
-    credentials: true,
-  }),
-  adminRoute
-);
-app.use(
-  "/api/auth",
-  cors({
-    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"],
-    credentials: true,
-  }),
-  authRoute
-);
-app.use(
-  "/api/articles",
-  cors({
-    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"],
-    credentials: true,
-  }),
-  questionRoute
-);
-app.use(
-  "/api/users",
-  cors({
-    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"],
-    credentials: true,
-  }),
-  userRoute
-);
-app.use(
-  "/api/answer",
-  cors({
-    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"],
-    credentials: true,
-  }),
-  answerRoute
-);
-app.use(
-  "/api/comment",
-  cors({
-    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"],
-    credentials: true,
-  }),
-  commentRoute
-);
-app.use(
-  "/api/search",
-  cors({
-    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"],
-    credentials: true,
-  }),
-  searchRoute
-);
-app.use(
-  "/api/mypage",
-  cors({
-    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"],
-    credentials: true,
-  }),
-  mypageRoute
-);
+app.use("/admin", cors(), adminRoute);
+app.use("/api/auth", cors(), authRoute);
+app.use("/api/articles", cors(), questionRoute);
+app.use("/api/users", cors(), userRoute);
+app.use("/api/answer", cors(), answerRoute);
+app.use("/api/comment", cors(), commentRoute);
+app.use("/api/search", cors(), searchRoute);
+app.use("/api/mypage", cors(), mypageRoute);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
