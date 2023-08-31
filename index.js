@@ -25,15 +25,6 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(passport.initialize());
 app.use(cookieParser());
 app.use(express.json({ limit: "50mb" }));
-
-mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB Connected..."))
-  .catch((err) => console.log(err));
-
 const allowedOrigins = [
   "https://dingdong-front.vercel.app",
   "http://localhost:3001",
@@ -45,6 +36,14 @@ app.use(
     credentials: true,
   })
 );
+
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB Connected..."))
+  .catch((err) => console.log(err));
 
 app.use("/admin", adminRoute);
 app.use("/api/auth", authRoute);
