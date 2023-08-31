@@ -45,14 +45,15 @@ app.use(
   })
 );
 
-app.use("/admin", adminRoute);
-app.use("/api/auth", authRoute);
-app.use("/api/articles", questionRoute);
-app.use("/api/users", userRoute);
-app.use("/api/answer", answerRoute);
-app.use("/api/comment", commentRoute);
-app.use("/api/search", searchRoute);
-app.use("/api/mypage", mypageRoute);
+// 라우트 핸들러에 CORS 허용을 설정합니다.
+app.use("/admin", cors(), adminRoute);
+app.use("/api/auth", cors(), authRoute);
+app.use("/api/articles", cors(), questionRoute);
+app.use("/api/users", cors(), userRoute);
+app.use("/api/answer", cors(), answerRoute);
+app.use("/api/comment", cors(), commentRoute);
+app.use("/api/search", cors(), searchRoute);
+app.use("/api/mypage", cors(), mypageRoute);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
