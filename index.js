@@ -26,7 +26,7 @@ app.use(passport.initialize());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://dingdong-front.vercel.app",
+    origin: ["https://dingdong-front.vercel.app", "http://localhost:3001"], // 허락하고자 하는 요청 주소
     credentials: true, // Add this line
   })
 );
