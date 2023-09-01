@@ -1,4 +1,4 @@
-const allowCors = (allowedOrigin) => (fn) => async (req, res) => {
+const allowCors = (allowedOrigin) => async (req, res) => {
   const origin = req.headers.origin;
 
   // Check if the origin is allowed
