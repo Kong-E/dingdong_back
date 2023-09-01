@@ -25,14 +25,6 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(passport.initialize());
 app.use(cookieParser());
 app.use(express.json({ limit: "50mb" }));
-const allowedOrigins = "http://localhost:3001";
-
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
-);
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -41,6 +33,11 @@ mongoose
   })
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
+
+const allowCors = require("./middleware/cors");
+
+// Use the allowCors middleware for localhost:3001
+app.use(allowCors("http://localhost:3001"));
 
 app.use("/admin", adminRoute);
 app.use("/api/auth", authRoute);
