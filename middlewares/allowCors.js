@@ -2,7 +2,7 @@ const allowCors = (fn) => async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://dingdong-front.vercel.app'"
+    "https://dingdong-front.vercel.app"
   );
   // another common pattern
   // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
