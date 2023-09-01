@@ -37,7 +37,7 @@ mongoose
 const allowCors = require("./middleware/cors");
 
 // Use the allowCors middleware for localhost:3001
-app.use(allowCors("http://localhost:3001"));
+app.use(allowCors);
 
 app.use("/admin", adminRoute);
 app.use("/api/auth", authRoute);
