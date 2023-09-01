@@ -25,10 +25,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(passport.initialize());
 app.use(cookieParser());
 app.use(express.json({ limit: "50mb" }));
-const allowedOrigins = [
-  "https://dingdong-front.vercel.app",
-  "http://localhost:3001",
-];
+const allowedOrigins = "http://localhost:3001";
 
 app.use(
   cors({
